@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import vyxloLogo from "@/assets/vyxlo-logo.png";
 
 const navLinks = ["Features", "Testimonials", "Creators", "Blog", "Chrome Extension"];
 
@@ -9,7 +10,7 @@ const Navbar = () => {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         {/* Logo */}
         <a href="/" className="flex items-center gap-2 text-xl font-bold text-foreground">
-          <span className="text-2xl">🔥</span>
+          <img src={vyxloLogo} alt="Vyxlo" className="h-7 w-7 rounded" />
           <span>Vyxlo</span>
         </a>
 

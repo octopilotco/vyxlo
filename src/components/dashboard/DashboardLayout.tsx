@@ -1,4 +1,5 @@
 import { useAuth } from "@/contexts/AuthContext";
+import vyxloLogo from "@/assets/vyxlo-logo.png";
 import { Button } from "@/components/ui/button";
 import { LogOut, Sparkles, Calendar, BookOpen, BarChart3, PenTool, Users, MessageCircle, Settings, Gift } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
@@ -21,7 +22,7 @@ const DashboardLayout = () => {
     <div className="flex h-screen bg-background">
       <aside className="flex w-64 flex-col border-r border-border bg-background shrink-0">
         <div className="flex items-center gap-2 px-6 py-5 text-xl font-bold text-foreground">
-          <span className="text-2xl">🔥</span>
+          <img src={vyxloLogo} alt="Vyxlo" className="h-7 w-7 rounded" />
           <span>Vyxlo</span>
         </div>
 

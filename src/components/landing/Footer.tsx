@@ -1,3 +1,5 @@
+import vyxloLogo from "@/assets/vyxlo-logo.png";
+
 const productLinks = ["Features", "Pricing", "Chrome Extension"];
 const resourceLinks = ["Blog", "Testimonials", "Creators", "Affiliate Program", "Tools"];
 const legalLinks = ["Terms", "Privacy"];
@@ -10,7 +12,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <a href="/" className="flex items-center gap-2 text-xl font-bold text-foreground">
-              <span className="text-2xl">🔥</span>
+              <img src={vyxloLogo} alt="Vyxlo" className="h-7 w-7 rounded" />
               <span>Vyxlo</span>
             </a>
             <p className="mt-4 text-sm text-muted-foreground">

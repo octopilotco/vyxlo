@@ -1,4 +1,5 @@
 import { useState } from "react";
+import vyxloLogo from "@/assets/vyxlo-logo.png";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
@@ -50,7 +51,7 @@ const Auth = () => {
       <div className="w-full max-w-md">
         <div className="mb-8 text-center">
           <a href="/" className="inline-flex items-center gap-2 text-2xl font-bold text-foreground">
-            <span className="text-3xl">🔥</span>
+            <span className="text-3xl"><img src={vyxloLogo} alt="Vyxlo" className="h-8 w-8 rounded inline" /></span>
             <span>Vyxlo</span>
           </a>
           <p className="mt-2 text-muted-foreground">
