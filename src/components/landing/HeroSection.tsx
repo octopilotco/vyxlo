@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import vyxloLogo from "@/assets/vyxlo-logo.png";
 import { ArrowRight, Star, Chrome } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
@@ -112,7 +113,7 @@ const HeroSection = () => {
             <div className="flex">
               {/* Mini sidebar */}
               <div className="w-48 border-r border-border bg-card p-4">
-                <div className="mb-6 text-xl">🔥</div>
+                <img src={vyxloLogo} alt="Vyxlo" className="mb-6 h-7 w-7 rounded" />
                 <div className="space-y-1">
                   {sidebarItems.map((item) => (
                     <div
