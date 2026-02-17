@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import ScrollReveal from "./ScrollReveal";
 
 const row1 = [
   { name: "DevDan", text: "Vyxlo completely changed how I approach content. The AI suggestions are scarily accurate." },
@@ -33,11 +34,11 @@ const TestimonialCard = ({ name, text }: { name: string; text: string }) => (
 const WallOfLove = () => {
   return (
     <section id="testimonials" className="border-b border-border section-padding">
-      <div className="mx-auto max-w-7xl px-6">
+      <ScrollReveal className="mx-auto max-w-7xl px-6">
         <h2 className="text-center text-4xl font-bold tracking-tight text-foreground lg:text-5xl">
           Trusted by <span className="text-gradient">Creators</span>
         </h2>
-      </div>
+      </ScrollReveal>
 
       <div className="mt-14 space-y-6 overflow-hidden">
         <div className="animate-scroll-left flex gap-6">

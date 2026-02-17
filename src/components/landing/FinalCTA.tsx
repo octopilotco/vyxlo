@@ -1,11 +1,12 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import ScrollReveal from "./ScrollReveal";
 
 const FinalCTA = () => {
   return (
     <section className="border-b border-border section-padding">
-      <div className="mx-auto max-w-4xl px-6 text-center">
+      <ScrollReveal className="mx-auto max-w-4xl px-6 text-center">
         <h2 className="text-4xl font-bold tracking-tight text-foreground lg:text-5xl">
           Take The Easy Route.{" "}
           <span className="text-gradient">Grow With Vyxlo!</span>
@@ -19,7 +20,7 @@ const FinalCTA = () => {
             <ArrowRight className="ml-2 h-5 w-5" />
           </Link>
         </Button>
-      </div>
+      </ScrollReveal>
     </section>
   );
 };
