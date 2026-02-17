@@ -1,4 +1,5 @@
 import { Sparkles, Zap, Brain, PenTool, Clock, BarChart3, BookOpen, Activity, CalendarClock, Check } from "lucide-react";
+import ScrollReveal from "./ScrollReveal";
 
 const features = [
   {
@@ -69,7 +70,7 @@ const features = [
 const FeaturesSection = () => {
   return (
     <section id="features" className="border-b border-border section-padding">
-      <div className="mx-auto max-w-7xl px-6">
+      <ScrollReveal className="mx-auto max-w-7xl px-6">
         <h2 className="text-center text-4xl font-bold tracking-tight text-foreground lg:text-5xl">
           Vyxlo Just <span className="text-gradient">Leveled Up</span>
         </h2>
@@ -79,12 +80,12 @@ const FeaturesSection = () => {
 
         <div className="mt-20 space-y-24">
           {features.map((feature, index) => (
-            <div
-              key={feature.category}
-              className={`flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16 ${
-                index % 2 === 1 ? "lg:flex-row-reverse" : ""
-              }`}
-            >
+            <ScrollReveal key={feature.category} delay={0.1}>
+              <div
+                className={`flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16 ${
+                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                }`}
+              >
               {/* Mockup */}
               <div className="flex-1">
                 <div className="glass-card flex aspect-video items-center justify-center rounded-2xl shadow-lg shadow-black/10">
@@ -109,9 +110,10 @@ const FeaturesSection = () => {
                 </ul>
               </div>
             </div>
+            </ScrollReveal>
           ))}
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 };

@@ -1,11 +1,12 @@
 import { ArrowRight, Chrome } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import ScrollReveal from "./ScrollReveal";
 
 const ChromeExtensionSection = () => {
   return (
     <section id="chrome-extension" className="border-b border-border section-padding">
-      <div className="mx-auto max-w-7xl px-6 text-center">
+      <ScrollReveal className="mx-auto max-w-7xl px-6 text-center">
         <h2 className="text-4xl font-bold tracking-tight text-foreground lg:text-5xl">
           Insights anywhere on 𝕏.{" "}
           <span className="text-gradient">Instantly!</span>
@@ -30,7 +31,7 @@ const ChromeExtensionSection = () => {
             </div>
           </div>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 };

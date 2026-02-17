@@ -1,6 +1,7 @@
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import ScrollReveal from "./ScrollReveal";
 
 const proFeatures = [
   "AI Chat Mode",
@@ -29,7 +30,7 @@ const advancedFeatures = [
 const PricingSection = () => {
   return (
     <section id="pricing" className="border-b border-border section-padding">
-      <div className="mx-auto max-w-5xl px-6">
+      <ScrollReveal className="mx-auto max-w-5xl px-6">
         <h2 className="text-center text-4xl font-bold tracking-tight text-foreground lg:text-5xl">
           Simple, Transparent Pricing
         </h2>
@@ -89,7 +90,7 @@ const PricingSection = () => {
             </ul>
           </div>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 };

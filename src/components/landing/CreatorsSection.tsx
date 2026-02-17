@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import ScrollReveal from "./ScrollReveal";
 
 const categories = [
   {
@@ -28,7 +29,7 @@ const categories = [
 const CreatorsSection = () => {
   return (
     <section id="creators" className="border-b border-border section-padding">
-      <div className="mx-auto max-w-7xl px-6">
+      <ScrollReveal className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
           <h2 className="text-4xl font-bold tracking-tight text-foreground lg:text-5xl">
             For Serious Creators
@@ -49,7 +50,7 @@ const CreatorsSection = () => {
             </div>
           ))}
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 };
