@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import vyxloLogo from "@/assets/vyxlo-logo.png";
 
 const navLinks = ["Features", "Testimonials", "Creators", "Blog", "Chrome Extension"];
@@ -28,9 +29,11 @@ const Navbar = () => {
         </div>
 
         {/* CTA */}
-        <Button className="hidden rounded-full bg-foreground px-6 py-2.5 text-sm font-semibold text-background transition-all duration-200 hover:bg-foreground/90 hover:shadow-lg md:flex">
-          Get Started Free
-          <ArrowRight className="ml-1.5 h-4 w-4" />
+        <Button asChild className="hidden rounded-full bg-foreground px-6 py-2.5 text-sm font-semibold text-background transition-all duration-200 hover:bg-foreground/90 hover:shadow-lg md:flex">
+          <Link to="/auth">
+            Get Started Free
+            <ArrowRight className="ml-1.5 h-4 w-4" />
+          </Link>
         </Button>
       </div>
     </nav>

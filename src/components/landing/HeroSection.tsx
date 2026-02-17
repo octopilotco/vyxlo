@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, Star, Chrome } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import HeroMockup from "./HeroMockup";
 
@@ -55,9 +56,11 @@ const HeroSection = () => {
           </p>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <Button className="w-fit rounded-full bg-foreground px-8 py-6 text-base font-semibold text-background transition-all duration-200 hover:bg-foreground/90 hover:shadow-xl hover:shadow-foreground/5">
-              Start Growing Free
-              <ArrowRight className="ml-2 h-5 w-5" />
+            <Button asChild className="w-fit rounded-full bg-foreground px-8 py-6 text-base font-semibold text-background transition-all duration-200 hover:bg-foreground/90 hover:shadow-xl hover:shadow-foreground/5">
+              <Link to="/auth">
+                Start Growing Free
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
             </Button>
 
             <div className="flex items-center gap-2 text-sm text-muted-foreground">

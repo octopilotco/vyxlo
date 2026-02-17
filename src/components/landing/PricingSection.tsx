@@ -1,5 +1,6 @@
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const proFeatures = [
   "AI Chat Mode",
@@ -44,9 +45,11 @@ const PricingSection = () => {
               <span className="text-5xl font-extrabold tracking-tight text-foreground">$39</span>
               <span className="text-muted-foreground">/month</span>
             </div>
-            <Button className="mt-6 w-full rounded-full bg-foreground px-8 py-6 text-base font-semibold text-background transition-all duration-200 hover:bg-foreground/90 hover:shadow-lg">
-              Get Started Free
-              <ArrowRight className="ml-2 h-5 w-5" />
+            <Button asChild className="mt-6 w-full rounded-full bg-foreground px-8 py-6 text-base font-semibold text-background transition-all duration-200 hover:bg-foreground/90 hover:shadow-lg">
+              <Link to="/auth">
+                Get Started Free
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
             </Button>
             <ul className="mt-8 space-y-3">
               {proFeatures.map((f) => (
@@ -70,9 +73,11 @@ const PricingSection = () => {
               <span className="ml-2 text-sm text-muted-foreground line-through">$49</span>
             </div>
             <p className="mt-1 text-xs font-medium text-primary">Early adopter discount</p>
-            <Button className="mt-6 w-full rounded-full bg-primary px-8 py-6 text-base font-semibold text-primary-foreground transition-all duration-200 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20">
-              Get Started Free
-              <ArrowRight className="ml-2 h-5 w-5" />
+            <Button asChild className="mt-6 w-full rounded-full bg-primary px-8 py-6 text-base font-semibold text-primary-foreground transition-all duration-200 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20">
+              <Link to="/auth">
+                Get Started Free
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
             </Button>
             <ul className="mt-8 space-y-3">
               {advancedFeatures.map((f) => (
