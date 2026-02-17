@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const FinalCTA = () => {
   return (
@@ -12,9 +13,11 @@ const FinalCTA = () => {
         <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
           Join 1,458+ creators who are already growing faster on 𝕏.
         </p>
-        <Button className="mt-10 rounded-full bg-foreground px-10 py-6 text-base font-semibold text-background transition-all duration-200 hover:bg-foreground/90 hover:shadow-xl hover:shadow-foreground/5">
-          Start Growing Free
-          <ArrowRight className="ml-2 h-5 w-5" />
+        <Button asChild className="mt-10 rounded-full bg-foreground px-10 py-6 text-base font-semibold text-background transition-all duration-200 hover:bg-foreground/90 hover:shadow-xl hover:shadow-foreground/5">
+          <Link to="/auth">
+            Start Growing Free
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Link>
         </Button>
       </div>
     </section>
