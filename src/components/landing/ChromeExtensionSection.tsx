@@ -1,5 +1,6 @@
 import { ArrowRight, Chrome } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const ChromeExtensionSection = () => {
   return (
@@ -12,10 +13,12 @@ const ChromeExtensionSection = () => {
         <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
           Get powerful analytics and AI-driven insights directly in your 𝕏 feed with our Chrome extension. No tab switching needed.
         </p>
-        <Button className="mt-8 rounded-full bg-foreground px-8 py-6 text-base font-semibold text-background transition-all duration-200 hover:bg-foreground/90 hover:shadow-xl hover:shadow-foreground/5">
-          <Chrome className="mr-2 h-5 w-5" />
-          Get Chrome Extension
-          <ArrowRight className="ml-2 h-5 w-5" />
+        <Button asChild className="mt-8 rounded-full bg-foreground px-8 py-6 text-base font-semibold text-background transition-all duration-200 hover:bg-foreground/90 hover:shadow-xl hover:shadow-foreground/5">
+          <Link to="/auth">
+            <Chrome className="mr-2 h-5 w-5" />
+            Get Chrome Extension
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Link>
         </Button>
 
         {/* Mockup placeholder */}
