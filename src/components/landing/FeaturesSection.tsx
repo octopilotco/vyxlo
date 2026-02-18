@@ -1,119 +1,79 @@
-import { Sparkles, Zap, Brain, PenTool, Clock, BarChart3, BookOpen, Activity, CalendarClock, Check } from "lucide-react";
+import { Lightbulb, PenTool, Clock, BarChart3 } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const features = [
   {
-    category: "AI CHAT",
-    icon: Sparkles,
-    title: "Your Voice. Infinite Firepower.",
-    description: "Chat with AI that knows your style, audience, and goals. Generate content ideas, refine your messaging, and brainstorm strategies — all in your voice.",
-    bullets: ["Personalized AI that learns your tone", "Context-aware content generation", "Strategic brainstorming partner"],
+    icon: Lightbulb,
+    label: "Inspiration",
+    title: "Ideas that fit your voice",
+    description:
+      "Every morning, Vyxlo surfaces fresh content ideas based on your niche, your style, and what's working right now. No more blank screen panic.",
+    span: "col-span-1 md:col-span-2",
   },
   {
-    category: "INSPIRATION",
-    icon: Brain,
-    title: "Never run out of content ideas again",
-    description: "Our advanced inspiration engine curates trending topics, viral formats, and personalized suggestions based on your niche and audience.",
-    bullets: ["AI-curated trending topics daily", "Personalized to your niche", "One-click content creation"],
-  },
-  {
-    category: "AI WRITER",
     icon: PenTool,
-    title: "Write faster. Write better.",
-    description: "Transform rough ideas into polished tweets. Our AI writer understands 𝕏 algorithms and crafts content optimized for maximum engagement.",
-    bullets: ["Algorithm-optimized writing", "Multiple tone options", "Thread & single tweet support"],
+    label: "AI Writer",
+    title: "Draft to publish in seconds",
+    description:
+      "Turn a rough idea into a polished tweet or thread. The AI writes like you — not like a robot — because it learns your tone.",
+    span: "col-span-1",
   },
   {
-    category: "REWRITE",
-    icon: Zap,
-    title: "Your new secret weapon",
-    description: "Take any tweet and rewrite it in your voice. Perfect for putting your spin on trending topics or refreshing your best-performing content.",
-    bullets: ["Voice-matched rewrites", "Preserve original intent", "Boost engagement scores"],
-  },
-  {
-    category: "SCHEDULER",
     icon: Clock,
-    title: "Post at the perfect time",
-    description: "Our next-gen scheduler analyzes your audience's activity patterns and automatically queues posts for maximum visibility and engagement.",
-    bullets: ["Smart time optimization", "Auto-queue management", "Cross-timezone scheduling"],
+    label: "Scheduler",
+    title: "Post when it matters",
+    description:
+      "Queue content for when your audience is most active. Set it up once, stay consistent forever. No more manual posting.",
+    span: "col-span-1",
   },
   {
-    category: "ANALYTICS",
     icon: BarChart3,
-    title: "Grow with data, not guesswork",
-    description: "Track every metric that matters. From follower growth to engagement rates, get actionable insights to refine your strategy.",
-    bullets: ["Real-time performance tracking", "Engagement pattern analysis", "Growth trend forecasting"],
-  },
-  {
-    category: "LIBRARY",
-    icon: BookOpen,
-    title: "Search Smarter. Steal Like a Strategist.",
-    description: "Build your personal library of high-performing content. Search semantically, bookmark inspiration, and never lose a great tweet again.",
-    bullets: ["Semantic search technology", "Smart bookmarking system", "Content categorization"],
-  },
-  {
-    category: "ALGORITHM",
-    icon: Activity,
-    title: "Win the Algorithm Before You Hit Send",
-    description: "Simulate how the 𝕏 algorithm will treat your content before you post. Optimize for reach, engagement, and virality.",
-    bullets: ["Pre-publish score prediction", "Algorithm factor breakdown", "Optimization suggestions"],
-  },
-  {
-    category: "ADVANCED SCHEDULER",
-    icon: CalendarClock,
-    title: "Scheduling That Works While You Sleep",
-    description: "Set up auto-retweet, auto-plug, and auto-delete rules. Your content works around the clock while you focus on creating.",
-    bullets: ["Auto-retweet top performers", "Smart auto-plug system", "Scheduled auto-deletion"],
+    label: "Analytics",
+    title: "Know what's working",
+    description:
+      "Track impressions, engagement, and follower growth in one clean dashboard. See exactly which posts perform and why.",
+    span: "col-span-1 md:col-span-2",
   },
 ];
 
 const FeaturesSection = () => {
   return (
-    <section id="features" className="border-b border-border section-padding">
-      <ScrollReveal className="mx-auto max-w-7xl px-6">
-        <h2 className="text-center text-4xl font-bold tracking-tight text-foreground lg:text-5xl">
-          Vyxlo Just <span className="text-gradient">Leveled Up</span>
-        </h2>
-        <p className="mx-auto mt-5 max-w-xl text-center text-lg leading-relaxed text-muted-foreground">
-          Every feature you need to dominate 𝕏, all in one powerful platform.
-        </p>
+    <section id="features" className="border-t border-border section-padding">
+      <div className="mx-auto max-w-5xl px-6">
+        <ScrollReveal>
+          <p className="text-center text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground/60">
+            How it works
+          </p>
+          <h2 className="mt-4 text-center text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem]">
+            Everything you need.
+            <br />
+            <span className="text-muted-foreground">Nothing you don't.</span>
+          </h2>
+        </ScrollReveal>
 
-        <div className="mt-20 space-y-24">
+        <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-3">
           {features.map((feature, index) => (
-            <ScrollReveal key={feature.category} delay={0.1}>
+            <ScrollReveal key={feature.label} delay={index * 0.08}>
               <div
-                className={`flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16 ${
-                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
+                className={`group h-full rounded-2xl border border-border bg-card/50 p-7 transition-all duration-300 hover:border-muted-foreground/20 hover:bg-card ${feature.span}`}
               >
-              {/* Mockup */}
-              <div className="flex-1">
-                <div className="glass-card flex aspect-video items-center justify-center rounded-2xl shadow-lg shadow-black/10">
-                  <feature.icon className="h-16 w-16 text-muted-foreground/20" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
+                  <feature.icon className="h-5 w-5 text-primary" strokeWidth={1.5} />
                 </div>
+                <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground/60">
+                  {feature.label}
+                </p>
+                <h3 className="mt-2 text-xl font-semibold tracking-tight text-foreground">
+                  {feature.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {feature.description}
+                </p>
               </div>
-
-              {/* Text */}
-              <div className="flex-1">
-                <span className="text-xs font-bold uppercase tracking-[0.15em] text-primary">
-                  {feature.category}
-                </span>
-                <h3 className="mt-3 text-3xl font-bold tracking-tight text-foreground">{feature.title}</h3>
-                <p className="mt-4 leading-relaxed text-muted-foreground">{feature.description}</p>
-                <ul className="mt-6 space-y-3">
-                  {feature.bullets.map((bullet) => (
-                    <li key={bullet} className="flex items-center gap-3 text-sm text-muted-foreground">
-                      <Check className="h-4 w-4 shrink-0 text-primary" />
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
             </ScrollReveal>
           ))}
         </div>
-      </ScrollReveal>
+      </div>
     </section>
   );
 };
