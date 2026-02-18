@@ -1,11 +1,9 @@
 import Navbar from "@/components/landing/Navbar";
 import HeroSection from "@/components/landing/HeroSection";
-import TestimonialsCarousel from "@/components/landing/TestimonialsCarousel";
-import ChromeExtensionSection from "@/components/landing/ChromeExtensionSection";
-import CreatorsSection from "@/components/landing/CreatorsSection";
+import ProblemSection from "@/components/landing/ProblemSection";
 import FeaturesSection from "@/components/landing/FeaturesSection";
 import PricingSection from "@/components/landing/PricingSection";
-import WallOfLove from "@/components/landing/WallOfLove";
+import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import FinalCTA from "@/components/landing/FinalCTA";
 import Footer from "@/components/landing/Footer";
 
@@ -14,12 +12,10 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
-      <TestimonialsCarousel />
-      <ChromeExtensionSection />
-      <CreatorsSection />
+      <ProblemSection />
       <FeaturesSection />
       <PricingSection />
-      <WallOfLove />
+      <TestimonialsSection />
       <FinalCTA />
       <Footer />
     </div>
