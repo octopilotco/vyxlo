@@ -1,145 +1,64 @@
 
 
-# Vyxlo — Full Clone of SuperX.so
+## Upgrade Halaman Inspiration Dashboard
 
-## Overview
-A complete clone of SuperX.so rebranded as "Vyxlo" — covering the marketing landing page, authentication, and the full dashboard application with all features possible within Lovable's capabilities.
+### Ringkasan
+Memperkaya halaman Inspiration dengan lebih banyak mock data, interaksi yang lebih lengkap (bookmark, search, sort), dan layout yang lebih polished agar terasa seperti fitur produk nyata.
 
----
+### Yang Akan Ditambahkan
 
-## Phase 1: Landing Page (Dark Theme Marketing Site)
+**1. Data Mock yang Lebih Lengkap**
+- Dari 5 tweet menjadi 12+ tweet dengan variasi kategori lebih seimbang
+- Tambah field baru: `bookmarked`, `verified` (centang biru), `image` (opsional gambar/media preview)
+- Tambah kategori baru: "Growth", "Mindset"
 
-### Navbar
-- Vyxlo logo (🔥 emoji + "Vyxlo" text) on the left
-- Navigation links: Features, Testimonials, Creators, Blog, Chrome Extension
-- "Get Started for Free" CTA button with arrow icon on the right
+**2. Fitur Search & Sort**
+- Search bar di atas category chips untuk filter tweet berdasarkan teks
+- Sort dropdown (Most Liked, Most Retweeted, Latest) menggunakan komponen Select yang sudah ada
 
-### Hero Section
-- Split layout: left side with headline "Grow faster on 𝕏 with *hidden insights*" (rotating text animation cycling through "hidden insights", "smart analytics", "actionable data")
-- Subheadline text
-- "Get Started for Free" CTA button
-- "Featured on Chrome Webstore" badge
-- Avatar stack with star ratings and "Loved by 1458+ creators" text
-- Product Hunt "#1 Product of the Day" badge
-- Right side: interactive app preview mockup showing the dashboard sidebar and Inspiration feed
+**3. Interaksi Bookmark**
+- Toggle bookmark pada setiap tweet card (ikon Bookmark yang bisa di-klik, state lokal)
+- Tab filter tambahan: tampilkan hanya tweet yang di-bookmark
 
-### Testimonials Carousel (Top)
-- Horizontally scrolling testimonial cards with auto-scroll
-- Each card: star rating, quote text, avatar, name, date
-- Infinite loop animation
+**4. Tweet Card yang Lebih Kaya**
+- Verified badge (centang biru) di samping nama user yang terverifikasi
+- Opsional image preview di bawah teks tweet
+- Hover state yang lebih jelas pada card (subtle border glow)
+- Tombol "Use Tweet" dan "View" tetap dipertahankan, tambah tombol "Bookmark"
 
-### Chrome Extension Section
-- Headline: "Insights anywhere on 𝕏. Instantly!"
-- Description text
-- "Get Chrome Extension" CTA
-- Large product screenshot
+**5. Empty State**
+- Tampilan khusus jika filter menghasilkan 0 hasil (ikon + pesan)
 
-### "For Serious Creators" Section
-- Headline + "Try Vyxlo Now" CTA
-- Category cards: Indie Hackers, Web Creators, Traders & Analysts, Founders, Influencers
-- Each card with title and description
-
-### Features Section — "Vyxlo Just Leveled Up"
-- Multiple feature blocks, each with:
-  - Category label, headline, description
-  - Product screenshot/mockup
-  - 3 benefit bullets with icons
-- Features covered:
-  1. AI Chat Mode — "Your Voice. Infinite Firepower."
-  2. Advanced Inspiration Engine — "Never run out of content ideas again"
-  3. AI Writer — "Write faster. Write better."
-  4. Rewrite with AI — "Your new secret weapon"
-  5. Next-Gen Scheduler — "Post at the perfect time"
-  6. Automation + Analytics — "Grow with data, not guesswork"
-  7. Vyxlo Library — "Search Smarter. Steal Like a Strategist."
-  8. Algorithm Simulator — "Win the Algorithm Before You Hit Send"
-  9. Advanced Scheduler — "Scheduling That Works While You Sleep"
-
-### Pricing Section
-- Two-tier pricing cards side by side:
-  - **PRO** — $39/month with feature list
-  - **ADVANCED** — $29/month (early discount, crossed-out $49) with extended feature list + "15 more features" note
-- "Get Started for Free" CTAs on both
-
-### "Trusted by Creators" Wall of Love
-- Horizontally auto-scrolling testimonial cards (second set)
-- Multiple rows of creator quotes with avatars and names
-
-### Final CTA Section
-- "Take The Easy Route. Grow With Vyxlo!"
-- "Get Started for Free" button
-
-### Footer
-- Vyxlo branding + "Made with 💛" credit line
-- Three columns: Product (Features, Pricing, Chrome Extension), Resources (Blog, Testimonials, Creators, Affiliate Program, tools), Legal (Terms, Privacy)
+**6. Stats Summary Bar**
+- Bar kecil di bawah header menampilkan total suggestions, bookmarked count, dan kategori terpopuler
 
 ---
 
-## Phase 2: Authentication & Backend Setup
+### Detail Teknis
 
-- Enable Lovable Cloud (Supabase) for database and auth
-- User signup/login flow (email + password)
-- User profiles table with auto-creation trigger
-- Protected routes for dashboard
-- Redirect logic after login
+**File yang diubah:**
+- `src/pages/dashboard/InspirationPage.tsx` -- refactor utama
 
----
+**Komponen yang digunakan (sudah ada):**
+- `Badge`, `Button`, `Select/SelectTrigger/SelectContent/SelectItem` dari UI library
+- `Input` untuk search bar
+- Icon dari `lucide-react`: `Search`, `Bookmark`, `BadgeCheck`, `SlidersHorizontal`, `Filter`
 
-## Phase 3: Dashboard App UI
+**State management:**
+- `activeTab`, `activeCategory`, `searchQuery`, `sortBy`, `bookmarkedIds` (Set) -- semua local state dengan `useState`
+- Filter pipeline: tab -> category -> search -> sort
 
-### Sidebar Navigation
-- Vyxlo logo at top
-- Navigation items: My Post Queue, Inspiration, Library, Analytics, Content Studio, Social Hub, Engage, Context
-- AI Usage indicator bar
-- "Become an Affiliate" link
+**Struktur mock data baru:**
+```text
+12+ tweets dengan field:
+  id, avatar, name, handle, time, text, category, likes, replies, retweets,
+  verified (boolean), image (string | null)
+```
 
-### Inspiration Page
-- Tab bar: All, Media, Articles, Tweets, Daily Mix
-- "Today's tweet suggestions" section with "Manage context" button
-- Category filter chips: All, Products, Trending, Media, Viral (with counts)
-- Tweet suggestion cards with: avatar, username, timestamp, tweet text, category tag, "Use Tweet" and "View" actions
+**Sort logic:**
+- "latest" = default order
+- "most-liked" = sort by likes desc
+- "most-retweeted" = sort by retweets desc
 
-### Content Studio
-- AI-powered tweet writing interface
-- Text editor with formatting
-- "Rewrite with AI" overlay functionality
-- Tone/style settings
-
-### Post Queue / Scheduler
-- Calendar view of scheduled posts
-- Time slot picker
-- Auto-retweet, auto-plug, auto-delete toggles
-
-### Analytics Dashboard
-- Performance metrics cards
-- Follower growth chart
-- Top tweets ranking
-- Engagement metrics
-
-### Library
-- Semantic search interface
-- Saved/bookmarked tweets
-- Filters by recency and topic
-
-### Settings & Context
-- Manage writing context/voice
-- Account settings
-
----
-
-## Phase 4: Stripe Payment Integration
-
-- Connect Stripe for subscription payments
-- PRO and ADVANCED plan checkout flows
-- Feature gating based on subscription tier
-- Upgrade/downgrade logic
-
----
-
-## Technical Notes
-- Dark theme throughout matching SuperX's exact color palette (dark backgrounds, warm accent colors)
-- Smooth scroll-triggered animations and transitions
-- Fully responsive across desktop, tablet, and mobile
-- All "SuperX" references replaced with "Vyxlo"
-- Dashboard features will be functional UI with mock data where real Twitter API integration isn't possible
+**Tidak ada perubahan database** -- semua menggunakan mock data lokal.
 
