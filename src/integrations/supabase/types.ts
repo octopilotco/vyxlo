@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      posts: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          scheduled_for: string | null
+          status: string
+          tone: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          content?: string
+          created_at?: string
+          id?: string
+          scheduled_for?: string | null
+          status?: string
+          tone?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          scheduled_for?: string | null
+          status?: string
+          tone?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -38,6 +71,72 @@ export type Database = {
           full_name?: string | null
           id?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      subscriptions: {
+        Row: {
+          ai_generations_reset_at: string
+          ai_generations_used: number
+          created_at: string
+          expires_at: string | null
+          id: string
+          midtrans_order_id: string | null
+          plan: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          ai_generations_reset_at?: string
+          ai_generations_used?: number
+          created_at?: string
+          expires_at?: string | null
+          id?: string
+          midtrans_order_id?: string | null
+          plan?: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          ai_generations_reset_at?: string
+          ai_generations_used?: number
+          created_at?: string
+          expires_at?: string | null
+          id?: string
+          midtrans_order_id?: string | null
+          plan?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_contexts: {
+        Row: {
+          created_at: string
+          id: string
+          label: string
+          updated_at: string
+          user_id: string
+          value: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          label: string
+          updated_at?: string
+          user_id: string
+          value?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          label?: string
+          updated_at?: string
+          user_id?: string
+          value?: string
         }
         Relationships: []
       }
