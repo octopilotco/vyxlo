@@ -3,6 +3,10 @@ import vyxloLogo from "@/assets/vyxlo-logo.png";
 import { Button } from "@/components/ui/button";
 import { LogOut, Sparkles, Calendar, BookOpen, BarChart3, PenTool, Users, MessageCircle, Settings, Gift } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+
+const FREE_AI_LIMIT = 10;
 
 const navItems = [
   { icon: Calendar, label: "My Post Queue", to: "/dashboard/queue" },
@@ -17,6 +21,26 @@ const navItems = [
 
 const DashboardLayout = () => {
   const { user, signOut } = useAuth();
+  const [aiUsed, setAiUsed] = useState(0);
+  const [plan, setPlan] = useState("free");
+
+  useEffect(() => {
+    if (!user) return;
+    const loadSub = async () => {
+      const { data } = await supabase
+        .from("subscriptions")
+        .select("ai_generations_used, plan")
+        .eq("user_id", user.id)
+        .single();
+      if (data) {
+        setAiUsed(data.ai_generations_used);
+        setPlan(data.plan);
+      }
+    };
+    loadSub();
+  }, [user]);
+
+  const usagePercent = plan === "free" ? Math.min((aiUsed / FREE_AI_LIMIT) * 100, 100) : 100;
 
   return (
     <div className="flex h-screen bg-background">
@@ -57,11 +81,25 @@ const DashboardLayout = () => {
         <div className="border-t border-border px-4 py-4">
           <div className="mb-2 flex items-center justify-between text-xs text-muted-foreground">
             <span>AI Usage</span>
-            <span>12/50</span>
+            {plan === "free" ? (
+              <span>{aiUsed}/{FREE_AI_LIMIT}</span>
+            ) : (
+              <span className="text-primary font-medium">{plan.toUpperCase()}</span>
+            )}
           </div>
-          <div className="h-1.5 rounded-full bg-secondary">
-            <div className="h-full w-[24%] rounded-full bg-primary" />
-          </div>
+          {plan === "free" && (
+            <div className="h-1.5 rounded-full bg-secondary">
+              <div
+                className="h-full rounded-full bg-primary transition-all"
+                style={{ width: `${usagePercent}%` }}
+              />
+            </div>
+          )}
+          {plan === "free" && aiUsed >= FREE_AI_LIMIT - 2 && (
+            <p className="text-[10px] text-primary mt-1">
+              {aiUsed >= FREE_AI_LIMIT ? "Limit reached — upgrade for more" : `${FREE_AI_LIMIT - aiUsed} generations left`}
+            </p>
+          )}
         </div>
 
         <div className="border-t border-border p-4">
